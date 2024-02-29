@@ -8,6 +8,7 @@ import 'package:belajar_flutter/user/page_nav/notes.dart';
 import 'package:belajar_flutter/user/page_nav/notifications.dart';
 import 'package:belajar_flutter/user/page_nav/settings.dart';
 import 'package:belajar_flutter/user/navbar/my_header_drawer.dart';
+import 'package:belajar_flutter/user/survey/survey.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
@@ -137,11 +138,12 @@ enum ItemListSections {
   Insert,
   Data_1,
   Data_2,
+  Survey,
 }
 
-Widget buildContainerForCurrentPage(ItemListSections currentPage) {
+Widget buildContainerForCurrentPage(ItemListSections currentPage, Function(ItemListSections) feedbackCallback) {
   final Map<ItemListSections, Widget> pageMap = {
-    ItemListSections.Dashboard: DashboardPage(),
+    ItemListSections.Dashboard: DashboardPage(feedbackCallback: feedbackCallback),
     ItemListSections.Contacts: ContactsPage(),
     ItemListSections.Events: EventsPage(),
     ItemListSections.Notes: NotesPage(),
@@ -149,6 +151,7 @@ Widget buildContainerForCurrentPage(ItemListSections currentPage) {
     ItemListSections.Notifications: NotificationsPage(),
     ItemListSections.Data_1: Data1Page(),
     ItemListSections.Data_2: Data2Page(),
+    ItemListSections.Survey: SurveyPage(feedbackCallback: feedbackCallback),
   };
 
   return pageMap[currentPage] ?? Container();

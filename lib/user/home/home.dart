@@ -18,7 +18,11 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    var container = buildContainerForCurrentPage(currentPage);
+    var container = buildContainerForCurrentPage(currentPage, (feedback) {
+      setState(() {
+        currentPage = feedback;
+      });
+    });
 
     return Scaffold(
       drawer: NavBar(
@@ -48,7 +52,8 @@ class _HomeState extends State<Home> {
                               content: const Text('AlertDialog description'),
                               actions: <Widget>[
                                 TextButton(
-                                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
                                   child: const Text('Cancel'),
                                 ),
                                 TextButton(

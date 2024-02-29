@@ -1,17 +1,17 @@
 import 'package:belajar_flutter/user/navbar/navbar.dart';
 import 'package:flutter/material.dart';
 
-class DashboardPage extends StatefulWidget {
+class SurveyPage extends StatefulWidget {
   final Function(ItemListSections) feedbackCallback;
 
-  const DashboardPage({Key? key, required this.feedbackCallback})
+  const SurveyPage({Key? key, required this.feedbackCallback})
       : super(key: key);
 
   @override
-  _DashboardPageState createState() => _DashboardPageState();
+  _SurveyPageState createState() => _SurveyPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _SurveyPageState extends State<SurveyPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,11 +19,11 @@ class _DashboardPageState extends State<DashboardPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Dashboard Page"),
+            Text("Survey Page"),
             TextButton(
                 onPressed: () =>
-                    {widget.feedbackCallback(ItemListSections.Survey)},
-                child: Text("Survey"))
+                    {widget.feedbackCallback(ItemListSections.Dashboard)},
+                child: Text("Kembali"))
           ],
         ),
       ),
